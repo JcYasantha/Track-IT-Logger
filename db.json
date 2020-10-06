@@ -32,6 +32,11 @@
       "id": 2,
       "firstname": "Sam",
       "lastname": "Jonson"
+    },
+    {
+      "firstname": "Jaith",
+      "lastname": "Fonseka",
+      "id": 3
     }
   ]
 }
