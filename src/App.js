@@ -4,7 +4,8 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import "./App.css";
 
 import Navbar from "./layouts/Navbar";
-import LogList from "./logs/LogList"
+import LogList from "./logs/LogList";
+import AddBtn from './layouts/AddBtn';
 
 function App() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
     <Navbar />
     <div className="container">
       <LogList />
+      <AddBtn />
     </div>
   </div>;
 }

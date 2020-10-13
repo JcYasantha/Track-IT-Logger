@@ -28,7 +28,7 @@ const LogList = () => {
         <li className="collection-header"><h4 className="center">Logs</h4></li>
 
         {!loading && logs.length === 0 ? <p>There are no logs to show</p> : 
-          logs.map(log=><LogListItem log={log} />)
+          logs.map(log=><LogListItem key={log.id} log={log} />)
         }
         
         
