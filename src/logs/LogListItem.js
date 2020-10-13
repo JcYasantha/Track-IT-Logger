@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Moment from 'react-moment';
 
 const LogListItem = ({log}) => {
     return (
@@ -10,7 +11,10 @@ const LogListItem = ({log}) => {
             </a>
             <br/>
             <span className="grey-text">
-                ID #<span className="black-text">{log.id}</span> last updated by: <span className='black-text'>{log.tech}</span>
+                ID #<span className="black-text">{log.id}</span> last updated by: 
+                <span className='black-text'>{log.tech}</span> on {' '}
+                <span className='black-text'><Moment format='MMMM Do YYYY, h:mm:ss a'>{log.date}</Moment></span>
+                
             </span>
             <a href="#!" class="secondary-content">
                 <i class="material-icons grey-text">delete</i>
