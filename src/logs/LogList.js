@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import LogListItem from './LogListItem';
+import Preloader from '../layouts/Preloader';
 
 const LogList = () => {
 
@@ -20,7 +21,7 @@ const LogList = () => {
     };
 
     if(loading){
-      return <p>Loading....</p>
+      return <div className="center"><Preloader /></div>
     }
 
     return (
