@@ -6,6 +6,7 @@ import "./App.css";
 import Navbar from "./layouts/Navbar";
 import LogList from "./logs/LogList";
 import AddBtn from './layouts/AddBtn';
+import AddLog from './logs/AddLog';
 
 function App() {
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
     <Navbar />
     <div className="container">
       <LogList />
+      <AddLog/>
       <AddBtn />
     </div>
   </div>;
