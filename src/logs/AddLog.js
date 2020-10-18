@@ -1,4 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import M from "materialize-css/dist/js/materialize.min";
+
 
 const AddLog = () => {
     const [message, setMessage] = useState('');
@@ -6,7 +8,11 @@ const AddLog = () => {
     const [tech, setTech] = useState('');
 
     const onSubmit = () =>{
-        console.log(message);
+        if(message === '' || tech === ''){
+            M.toast({html: 'Please enter a message and a tech'})
+        }else{
+            console.log(message);
+        }
     }
     
     return (
