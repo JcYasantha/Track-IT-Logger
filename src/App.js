@@ -5,6 +5,7 @@ import "./App.css";
 
 import Navbar from "./layouts/Navbar";
 import TechList from './techs/TechList';
+import AddTech from './techs/AddTech';
 import LogList from "./logs/LogList";
 import AddBtn from './layouts/AddBtn';
 import AddLog from './logs/AddLog';
@@ -23,6 +24,7 @@ function App() {
       <AddLog/>
       <EditLog />
       <TechList />
+      <AddTech/>
     </div>
   </div>;
 }
