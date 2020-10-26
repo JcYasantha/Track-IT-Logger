@@ -1,8 +1,12 @@
 import React,{useState} from 'react';
+import { connect } from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
+import { addLog } from '../actions/logActions';
+import PropTypes from 'prop-types';
 
 
-const AddLog = () => {
+
+const AddLog = ({addLog}) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
@@ -11,7 +15,19 @@ const AddLog = () => {
         if(message === '' || tech === ''){
             M.toast({html: 'Please enter a message and a tech'})
         }else{
-            console.log(message);
+            const logNew = {
+                message,
+                attention,
+                tech,
+                date: new Date()
+            };
+
+            addLog(logNew);
+            setMessage('');
+            setAttention(false);
+            setTech('');
+            
+            M.toast({html: `Log added by ${tech}`})
         }
     }
     
@@ -26,12 +42,12 @@ const AddLog = () => {
                     </div>
                 </div>
                 
-                <div className="row">
+                {/* <div className="row">
                     <div className="input-field">
                         <input type="text" className="datepicker" />
                         <label htmlFor="message">Date</label>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="row">
                     <div className="input-field">
@@ -65,4 +81,8 @@ const ModalStyle = {
     width:'75%',
     height:'75%',
 };
-export default AddLog
+
+AddLog.prototype = {
+    addLog: PropTypes.func.isRequired,
+}
+export default connect(null,{addLog})(AddLog);
