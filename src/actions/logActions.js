@@ -1,4 +1,4 @@
-import {GET_LOGS, SET_LOADING, ERROR_LOGS, ADD_LOG, DELETE_LOG, SET_CURRENT, CLEAR_CURRENT, UPDATE_LOG} from './types';
+import {GET_LOGS, SET_LOADING, ERROR_LOGS, ADD_LOG, DELETE_LOG, SET_CURRENT, CLEAR_CURRENT, UPDATE_LOG, SEARCH_LOGS} from './types';
 
 export const setLoading = () => {
     return{
@@ -87,6 +87,7 @@ export const deleteLog = (id) => async dispatch => {
 
 };
 
+//set current selected log
 export const setCurrent = (log) =>  {
 
     return {
@@ -96,6 +97,7 @@ export const setCurrent = (log) =>  {
 
 };
 
+//clear current selected log
 export const clearCurrent = () => {
 
     return {
@@ -103,6 +105,7 @@ export const clearCurrent = () => {
     };
 };
 
+//update log
 export const updateLog = log => async dispatch => {
     console.log(log.id);
     try {
@@ -127,4 +130,23 @@ export const updateLog = log => async dispatch => {
             payload: error.response.data
         });
     }
+};
+
+//search logs
+export const searchLogs = (text) => async dispatch => {
+    
+    try {
+        const res = await fetch(`/logs?q=${text}`);
+        const data = await res.json();
+
+        dispatch({
+            type: SEARCH_LOGS,
+            payload: data
+        });
+    } catch (error) {
+        dispatch({
+            type: ERROR_LOGS,
+            payload: error.response.data
+        });
+    }   
 };

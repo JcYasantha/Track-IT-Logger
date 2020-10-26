@@ -1,4 +1,4 @@
-import {GET_LOGS, SET_LOADING, ERROR_LOGS, ADD_LOG, DELETE_LOG, SET_CURRENT, CLEAR_CURRENT, UPDATE_LOG} from '../actions/types';
+import {GET_LOGS, SET_LOADING, ERROR_LOGS, ADD_LOG, DELETE_LOG, SET_CURRENT, CLEAR_CURRENT, UPDATE_LOG, SEARCH_LOGS} from '../actions/types';
 
 const initialState = {
     logs:null,
@@ -42,6 +42,11 @@ export default (state = initialState, action) => {
                 ...state,
                 logs: state.logs.map(log => log.id === action.payload.id ? action.payload : log),
                 current:null
+            };
+        case SEARCH_LOGS:
+            return {
+                ...state,
+                logs: action.payload
             };
         case ERROR_LOGS:
             console.log(action.payload)
