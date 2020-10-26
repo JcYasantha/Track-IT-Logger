@@ -20,27 +20,6 @@
       "attention": true,
       "date": "03-05-2020",
       "tech": "Jon Smith"
-    },
-    {
-      "message": "testing 1",
-      "attention": false,
-      "tech": "2",
-      "date": "2020-10-26T13:02:59.288Z",
-      "id": 4
-    },
-    {
-      "message": "testing 2",
-      "attention": true,
-      "tech": "1",
-      "date": "2020-10-26T13:03:11.591Z",
-      "id": 5
-    },
-    {
-      "message": "fsfsfs",
-      "attention": true,
-      "tech": "1",
-      "date": "2020-10-26T13:04:16.274Z",
-      "id": 6
     }
   ],
   "techs": [
