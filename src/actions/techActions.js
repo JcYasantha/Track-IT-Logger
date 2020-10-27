@@ -8,6 +8,7 @@ export const setLoading = () => {
 
 export const getTechs = () => async dispatch => {
     try {
+        setLoading();
         const res = await fetch('/techs');
         const data = await res.json();
 

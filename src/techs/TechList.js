@@ -1,24 +1,16 @@
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 import TechListItem from './TechListItem';
+import { connect } from 'react-redux';
+import { getTechs } from '../actions/techActions';
+import PropTypes from 'prop-types'
 
-const TechList = () => {
 
-    const[loading, setLoading] = useState(true);
-    const[techs, setTechs] = useState([]);
-
+const TechList = ({ loading, techs, getTechs }) => {
+    
     useEffect(() => {
       getTechs();
+      // eslint-disable-next-line
     },[]);
-
-    const getTechs= async () => {
-
-      const res = await fetch('/techs');
-      const data = await res.json();
-
-      setLoading(false);
-      setTechs(data);
-    };
-
     
 
     return (
@@ -27,7 +19,7 @@ const TechList = () => {
                 <h4 className="center">Techs</h4>
                 <ul className="collection">
 
-                    {!loading && techs.length === 0 ? <p>There are no techs to show</p> : 
+                    {!loading && techs == null ? <p>There are no techs to show</p> : 
                     techs.map(tech=>
                         <TechListItem key={tech.id} tech={tech}/>
                     )}
@@ -40,4 +32,13 @@ const TechList = () => {
     )
 }
 
-export default TechList
+TechList.prototype = {
+    techs: PropTypes.object.isRequired,
+    getTechs: PropTypes.func.isRequired,
+}
+const mapStateToProp = state => ({
+    techs: state.tech.techs,
+    loading: state.tech.loading
+});
+
+export default connect(mapStateToProp,{getTechs})(TechList);

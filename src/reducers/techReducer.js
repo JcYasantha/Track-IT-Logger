@@ -10,7 +10,8 @@ export default (state = initialState, action) => {
         case GET_TECHS:
             return {
                 ...state,
-                techs: action.payload
+                techs: action.payload,
+                loading:false
             };
         case SET_LOADING:
             return {
