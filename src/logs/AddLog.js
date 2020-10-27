@@ -60,7 +60,7 @@ const AddLog = ({addLog, techs, getTechs}) => {
                         <select className='browser-default' name="tech" value={tech} onChange={(e)=>setTech(e.target.value)}>
                             <option value="" disabled>select a technician</option>
                             {techs !== null ? techs.map(tech => (
-                                <option value={tech.id}>{tech.firstname} {tech.lastname}</option>
+                                <option value={tech.id} key={tech.id}>{tech.firstname} {tech.lastname}</option>
                             )): <option value="" disabled>No Technicians</option>}
                         </select>
                     </div>
