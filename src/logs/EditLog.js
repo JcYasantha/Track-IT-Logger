@@ -3,10 +3,11 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { updateLog } from '../actions/logActions';
+import { getTechs } from '../actions/techActions';
 
 
 
-const EditLog = ({ current , updateLog}) => {
+const EditLog = ({ current , updateLog, techs, getTechs}) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
@@ -17,6 +18,9 @@ const EditLog = ({ current , updateLog}) => {
             setAttention(current.attention);
             setTech(current.tech);
         }
+
+        getTechs();
+        // eslint-disable-next-line
     }, [current]);
 
     const onSubmit = () =>{
@@ -49,9 +53,9 @@ const EditLog = ({ current , updateLog}) => {
                     <div className="input-field">
                         <select className='browser-default' name="tech" value={tech} onChange={(e)=>setTech(e.target.value)}>
                             <option value="" disabled>select a technician</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {techs !== null ? techs.map(tech => (
+                                <option value={tech.id}>{tech.firstname} {tech.lastname}</option>
+                            )): <option value="" disabled>No Technicians</option>}
                         </select>
                     </div>
                 </div>
@@ -81,8 +85,10 @@ const ModalStyle = {
 EditLog.prototype = {
     current: PropTypes.object.isRequired,
     updateLog: PropTypes.func.isRequired,
+    getTechs: PropTypes.func.isRequired,
 };
 const mapStateToProp = (state) => ({
-    current: state.log.current
+    current: state.log.current,
+    techs: state.tech.techs
 });
-export default connect(mapStateToProp, {updateLog})(EditLog);
+export default connect(mapStateToProp, {updateLog, getTechs})(EditLog);

@@ -1,32 +1,11 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "Need attention in workstation 007",
-      "attention": false,
-      "date": "03-04-2020",
-      "tech": "Jon Smith"
-    },
-    {
-      "id": 2,
-      "message": "Need attention in workstation 056",
-      "attention": false,
-      "date": "05-04-2020",
-      "tech": "Sam Jonson"
-    },
-    {
-      "id": 3,
-      "message": "Need attention in workstation 001",
-      "attention": true,
-      "date": "03-05-2020",
-      "tech": "Jon Smith"
-    },
-    {
       "id": 4,
       "message": "testing 1",
       "attention": true,
-      "tech": "2",
-      "date": "2020-10-26T19:40:14.008Z"
+      "tech": "3",
+      "date": "2020-10-27T05:22:15.601Z"
     },
     {
       "message": "fefedcd",
@@ -34,6 +13,13 @@
       "tech": "2",
       "date": "2020-10-27T05:14:48.808Z",
       "id": 5
+    },
+    {
+      "message": "dads",
+      "attention": false,
+      "tech": "1",
+      "date": "2020-10-27T05:18:02.748Z",
+      "id": 6
     }
   ],
   "techs": [
