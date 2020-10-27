@@ -9,7 +9,7 @@ export const setLoading = () => {
 export const getTechs = () => async dispatch => {
     try {
         const res = await fetch('/techs');
-        const data = res.json();
+        const data = await res.json();
 
         dispatch({
             type: GET_TECHS,

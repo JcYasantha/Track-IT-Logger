@@ -1,15 +1,21 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { addLog } from '../actions/logActions';
+import { getTechs } from '../actions/techActions';
 import PropTypes from 'prop-types';
 
 
 
-const AddLog = ({addLog}) => {
+const AddLog = ({addLog, techs, getTechs}) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
+
+    useEffect(() => {
+        getTechs();
+        // eslint-disable-next-line
+    }, [])
 
     const onSubmit = () =>{
         if(message === '' || tech === ''){
@@ -53,9 +59,9 @@ const AddLog = ({addLog}) => {
                     <div className="input-field">
                         <select className='browser-default' name="tech" value={tech} onChange={(e)=>setTech(e.target.value)}>
                             <option value="" disabled>select a technician</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {techs !== null ? techs.map(tech => (
+                                <option value={tech.id}>{tech.firstname} {tech.lastname}</option>
+                            )): <option value="" disabled>No Technicians</option>}
                         </select>
                     </div>
                 </div>
@@ -84,5 +90,10 @@ const ModalStyle = {
 
 AddLog.prototype = {
     addLog: PropTypes.func.isRequired,
+    getTechs:PropTypes.func.isRequired,
 }
-export default connect(null,{addLog})(AddLog);
+
+const mapStateToProp = state => ({
+    techs: state.tech.techs
+});
+export default connect(mapStateToProp,{addLog,getTechs})(AddLog);
